@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Header from './components/header/Header';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <header className="App-header">
         
         <Counter />
