@@ -10,15 +10,13 @@ const ProductSummary: FC = () => {
   const product = useAppSelector(selectProduct);
   
   return (
-    <div className='summary-container'>
-      <img id='product-image' src={product?.image} alt={`view of the product ${product?.title}`} />
-
-      <h1 id='product-title'>{product?.title}</h1>
-      <h2 id='product-subtitle'>{product?.subtitle}</h2>
-
-      <div id='product-tags'>
+    <div className='summary'>
+      <img className='summary-image' src={product?.image} alt={`view of the product ${product?.title}`} />
+      <p className='summary-title'>{product?.title}</p>
+      <p className='summary-subtitle'>{product?.subtitle}</p>
+      <div className='summary-tags'>
         {product?.tags.map((tag) => (
-          <p className='product-tag' key={tag} >{tag}</p>
+          <p className='summary-tag' key={tag} >{tag}</p>
         ))}
       </div>
     </div>
