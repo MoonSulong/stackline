@@ -1,7 +1,7 @@
 import {FC, useState, useEffect} from 'react'
 
 import { useAppSelector } from '../../redux/hooks';
-import { selectProduct, selectLoading } from '../../features/retail/retailSlice';
+import { selectSales, selectLoading } from '../../features/retail/retailSlice';
 
 import { SaleType } from '../../mock/mockAPI';
 
@@ -35,7 +35,7 @@ const TableHeader  : FC<TableHeaderProps> = ({column, sortBy, sortOrder, onClick
 
 const RetailTable : FC = () => {
   
-  const product = useAppSelector(selectProduct);
+  const sales = useAppSelector(selectSales);
   const loading = useAppSelector(selectLoading);
   const [sortedData, setSortedData] = useState<SaleType[]>([]);
   const [saleKeys, setSaleKeys] = useState<(keyof SaleType)[]>([]);
@@ -44,13 +44,13 @@ const RetailTable : FC = () => {
   
   useEffect(() => {
     // Update local state with Redux state
-    setSortedData(product?.sales ??[]);
-    setSaleKeys(Object.keys(product?.sales[0] ?? {}) as (keyof SaleType)[])
-  }, [product])
+    setSortedData(sales ??[]);
+    setSaleKeys(Object.keys(sales[0] ?? {}) as (keyof SaleType)[])
+  }, [sales])
 
   // Function to handle sorting
   const handleSort = (key: keyof SaleType) => {
-    const sorted = [...product?.sales ?? []].sort((a, b) => {
+    const sorted = [...sales ?? []].sort((a, b) => {
       if (a[key] < b[key]) return sortOrder === 'asc' ? -1 : 1;
       if (a[key] > b[key]) return sortOrder === 'asc' ? 1 : -1;
       return 0;
