@@ -1,12 +1,12 @@
 import retailData from './stackline_frontend_assessment_data_2021.json'
 
-export interface review {
+export interface ReviewType {
   customer: string, 
   review: string, 
   score: number
 }
 
-export interface sale {
+export interface SaleType {
   weekEnding: string, 
   retailSales: number, 
   wholesaleSales: number, 
@@ -14,22 +14,22 @@ export interface sale {
   retailerMargin: number
 }
 
-export interface product {
+export interface ProductType {
   id: string, 
   title: string, 
   image: string, 
   subtitle: string, 
   brand: string, 
-  reviews: review[], 
+  reviews: ReviewType[], 
   retailer: string, 
   details: string[],
   tags: string[], 
-  sales: sale[]
+  sales: SaleType[]
 }
 
 // A mock function to mimic making an async request for data
 export function fetchRetailData() {
-  return new Promise<product[]>((resolve) =>
+  return new Promise<ProductType[]>((resolve) =>
     setTimeout(() => resolve(retailData), 500)
   );
 }

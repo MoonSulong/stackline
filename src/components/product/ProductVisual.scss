@@ -1,0 +1,9 @@
+@import '../../styles/style';
+
+.visual {
+  display: flex;
+  flex-direction: column;
+  gap: $top;
+  margin-top: $top;
+  width: 65vw;
+}

@@ -1,0 +1,10 @@
+@import '../../styles/style';
+
+.summary-container {
+  background-color: $bg-white;
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  height: 80%;
+  width: 30vw;
+  margin-top: $top;
+}

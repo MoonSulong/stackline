@@ -1,16 +1,16 @@
 import { useEffect, FC } from 'react';
 
-import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { useAppDispatch } from './redux/hooks';
 
-import { fetchAsync, selectProduct } from './features/retail/retailSlice';
+import { fetchAsync } from './features/retail/retailSlice';
+
+import Dashboard from './components/dashboard/Dashboard';
 
 
 import Header from './components/header/Header';
 import './App.css';
 
 const App: FC = () => {
-  
-  const product = useAppSelector(selectProduct);
   
   const dispatch = useAppDispatch();
   
@@ -21,7 +21,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header />
-      {product?.title}
+      <Dashboard />
     </div>
   );
 }

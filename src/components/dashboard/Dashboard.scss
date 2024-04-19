@@ -1,0 +1,8 @@
+@import '../../styles/style';
+
+.dashboard {
+  background-color: $bg-grey;
+  height: 90vh;
+  display: flex;
+  justify-content: space-evenly;
+}
