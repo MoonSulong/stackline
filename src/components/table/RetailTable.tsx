@@ -18,6 +18,8 @@ interface TableHeaderProps {
 
 /**
  * Custom table header to support sort with icon
+ * Up arrow means the data is in desc order
+ * Down arrow means the data is in asc order
  */
 const TableHeader  : FC<TableHeaderProps> = ({column, sortBy, sortOrder, onClick}) => {
   const align = column === "weekEnding" ? ' left-align' : ' right-align'; 
@@ -42,7 +44,7 @@ const RetailTable : FC = () => {
   const [saleKeys, setSaleKeys] = useState<(keyof SaleType)[]>([]);
   // state to support sort
   const [sortedData, setSortedData] = useState<SaleType[]>([]);
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [sortBy, setSortBy] = useState<string | null>(null);
   
   useEffect(() => {
