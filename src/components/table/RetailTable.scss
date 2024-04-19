@@ -14,20 +14,21 @@
   }
   
   th, td {
-    width: 20%; /* Set the width of each cell to 20% */
+    width: 20%; /* Distribute the width of each column */
     min-width: 170px;
-    border-bottom: 1px solid #ddd; /* Add bottom border to table cells */
-    padding: 2% 2.5%; /* Add padding for better spacing */
-    color: $text-medium;
+    border-bottom: 1px solid #ddd; /* Add bottom border to each row */
+    padding: 2% 2.5%;
   }
   
   th {
     font-weight: 400;
     padding: 3% 2%;
+    color: $text-medium;
   }
   
   td {
     font-weight: lighter;
+    color: $text-light;
     
     &.right-align {
       padding-right: 4%;

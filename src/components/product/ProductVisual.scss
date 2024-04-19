@@ -7,3 +7,9 @@
   margin-top: $top;
   width: 75vw;
 }
+
+@media screen and (max-width: 1300px){
+  .visual {
+    width: 90vw;
+  }
+}
