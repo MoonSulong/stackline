@@ -4,6 +4,54 @@
   background-color: $bg-white;
   border-radius: $box-radius;
   box-shadow: $box-shadow;
-  height: 30%;
   width: 100%;
+  min-width: 950px;
+  
+  table {
+    width: 100%;
+    table-layout: fixed; /* Set the table layout to fixed */
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    width: 20%; /* Set the width of each cell to 20% */
+    min-width: 170px;
+    border-bottom: 1px solid #ddd; /* Add bottom border to table cells */
+    padding: 2% 2.5%; /* Add padding for better spacing */
+    color: $text-midum;
+  }
+  
+  th {
+    font-weight: 400;
+    padding: 3% 2%;
+  }
+  
+  td {
+    font-weight: lighter;
+    
+    &.right-align {
+      padding-right: 4%;
+    }
+  }
+  
+  .left-align {
+    text-align: start;
+  }
+  
+  .right-align {
+    text-align: end;
+  }
+  
+  .th-cell {
+    text-wrap: nowrap;
+    span {
+      vertical-align: middle;
+    }
+    
+    img {
+      height: 20px;
+      width: 20px;
+      vertical-align: middle;
+    }
+  }
 }

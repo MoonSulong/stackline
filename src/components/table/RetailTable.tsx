@@ -5,19 +5,42 @@ import { selectProduct, selectLoading } from '../../features/retail/retailSlice'
 
 import { SaleType } from '../../mock/mockAPI';
 
+import { formatDate, formatComma, formatDollar, formatHeader } from '../../utils/format';
+
+import ascIcon from '../../assets/up.svg';
+import descIcon from '../../assets/down.svg';
+
 import './RetailTable.scss'
+
+interface TableHeaderProps {
+  column: keyof SaleType;
+  sortBy: string | null;
+  sortOrder: 'asc' | 'desc';
+  onClick: (column: string) => void;
+}
+
+const TableHeader  : FC<TableHeaderProps> = ({column, sortBy, sortOrder, onClick}) => {
+  
+  const align = column === "weekEnding" ? ' left-align' : ' right-align'; 
+  
+  return (
+    <th className={"th-cell" + align} onClick={() => onClick(column)}>
+      <span>{formatHeader[column]} </span>
+      {column === sortBy && sortOrder ==='asc' ? 
+          <img src={ascIcon} alt="Ascending" /> : <img src={descIcon} alt="Descending" />
+      }
+    </th>
+  )
+}
 
 const RetailTable : FC = () => {
   
   const product = useAppSelector(selectProduct);
   const loading = useAppSelector(selectLoading);
-  
-  // dynamic column name for sales category 
-  const [saleKeys, setSaleKeys] = useState<(keyof SaleType)[]>([]);
-  
-  // sort data state
   const [sortedData, setSortedData] = useState<SaleType[]>([]);
+  const [saleKeys, setSaleKeys] = useState<(keyof SaleType)[]>([]);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+  const [sortBy, setSortBy] = useState<string | null>(null);
   
   useEffect(() => {
     // Update local state with Redux state
@@ -34,6 +57,7 @@ const RetailTable : FC = () => {
     });
     setSortedData(sorted);
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    setSortBy(key);
   };
 
   return (
@@ -42,17 +66,29 @@ const RetailTable : FC = () => {
       <table>
         <thead>
           <tr>
-            {saleKeys.map( saleKey => <th key={saleKey} onClick={() => handleSort(saleKey)}>{saleKey}</th>)
+            {saleKeys.map(
+                saleKey => ( 
+                  <TableHeader 
+                    key={saleKey}
+                    column ={saleKey} 
+                    sortBy={sortBy}
+                    sortOrder={sortOrder}
+                    onClick={() => handleSort(saleKey)}
+                  />
+                )
+              )
             }
           </tr>
         </thead>
         <tbody>
           {sortedData.map((item, index) => (
                 <tr key={index}>
-                {saleKeys.map((saleKey, idx) => (
-                  <td key={idx}>{item[saleKey]}</td>
-                ))}
-              </tr>
+                  <td className='left-align'>{formatDate(item.weekEnding)}</td>
+                  <td className='right-align'>{formatDollar(item.retailSales)}</td>
+                  <td className='right-align'>{formatDollar(item.wholesaleSales)}</td>
+                  <td className='right-align'>{formatComma(item.unitsSold)}</td>
+                  <td className='right-align'>{formatDollar(item.retailerMargin)}</td>
+                </tr>
               ))
             }
         </tbody>
