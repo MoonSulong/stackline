@@ -5,6 +5,9 @@
  * @returns date 'MM-DD-YYYY' <string>
  */
 export const formatDate = (date: string) : string => {
+  if (!date) {
+    return "";
+  }
   const [year, month, day] = date.split('-')
   return `${month}-${day}-${year}`;
 }
@@ -31,7 +34,7 @@ export const formatDollar = (num: number) : string => {
 export const formatHeader = {
   weekEnding: "WEEK ENDING", 
   retailSales: "RETAIL SALES", 
-  wholesaleSales: "WHOLE SALES", 
+  wholesaleSales: "WHOLESALE SALES", 
   unitsSold: "UNITS SOLD", 
   retailerMargin: "RETAILER MARGIN"
 }

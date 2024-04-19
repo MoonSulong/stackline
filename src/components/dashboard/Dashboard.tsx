@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ProductSummary from '../product/ProductSummary'
 import './Dashboard.scss'
 import ProductVisual from '../product/ProductVisual'
