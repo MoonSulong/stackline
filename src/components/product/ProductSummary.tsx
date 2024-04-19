@@ -19,7 +19,7 @@ const ProductSummary: FC = () => {
 
       <div id='product-tags'>
         {product?.tags.map((tag) => (
-          <p className='product-tag'>{tag}</p>
+          <p className='product-tag' key={tag} >{tag}</p>
         ))}
       </div>
     </div>

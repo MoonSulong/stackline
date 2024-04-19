@@ -12,7 +12,7 @@ export interface RetailState {
 const initialState: RetailState = {
   retail: [],
   product: null,
-  loading: false,
+  loading: true,
   error: false,
 };
 
@@ -57,5 +57,6 @@ export const retailSlice = createSlice({
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectProduct = (state: RootState) => state.retail.product;
+export const selectLoading = (state: RootState) => state.retail.loading;
 
 export default retailSlice.reducer;
