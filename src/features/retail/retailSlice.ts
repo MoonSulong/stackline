@@ -31,7 +31,7 @@ export const fetchAsync = createAsyncThunk(
 export const retailSlice = createSlice({
   name: 'retail',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
+  // This is empty because no extra action needed except fetching data
   reducers: {
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -58,7 +58,7 @@ export const retailSlice = createSlice({
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
+// in the slice file. For example: `useSelector((state: RootState) => state.retail.xxx)`
 export const selectProduct = (state: RootState) => state.retail.product;
 export const selectLoading = (state: RootState) => state.retail.loading;
 export const selectSales = (state: RootState) => state.retail.sales;

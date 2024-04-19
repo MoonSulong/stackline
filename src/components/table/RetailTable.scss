@@ -5,7 +5,7 @@
   border-radius: $box-radius;
   box-shadow: $box-shadow;
   width: 100%;
-  min-width: 950px;
+  min-width: $wd-min;
   
   table {
     width: 100%;

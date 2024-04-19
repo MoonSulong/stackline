@@ -1,12 +1,13 @@
-import React from 'react'
+import {FC} from 'react'
 import RetailGraph from '../graph/RetailGraph'
 import RetailTable from '../table/RetailTable'
 
 import './ProductVisual.scss'
 
-type Props = {}
-
-const ProductVisual = (props: Props) => {
+/**
+ * A component to contain table and graph at right panel
+ */
+const ProductVisual : FC = () => {
   return (
     <div className='visual'>
       <RetailGraph />

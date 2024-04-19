@@ -1,10 +1,11 @@
 import {FC} from 'react'
-
 import { useAppSelector } from '../../redux/hooks';
 import { selectProduct, selectLoading } from '../../features/retail/retailSlice';
-
 import './ProductSummary.scss'
 
+/**
+ * A component to show product summary at the left panel
+ */
 const ProductSummary: FC = () => {
   
   const product = useAppSelector(selectProduct);
@@ -20,7 +21,7 @@ const ProductSummary: FC = () => {
           {product?.tags.map((tag) => (
             <p className='summary-tag' key={tag} >{tag}</p>
           ))}
-      </div>
+        </div>
       </>}
     </div>
   )

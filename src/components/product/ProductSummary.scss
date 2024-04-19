@@ -52,6 +52,6 @@
 @media screen and (max-width: 1300px){
   .summary {
     width: 90vw;
-    min-width: 950px;
+    min-width: $wd-min;
   }
 }

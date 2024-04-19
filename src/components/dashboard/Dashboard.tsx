@@ -1,8 +1,13 @@
+import {FC} from 'react';
 import ProductSummary from '../product/ProductSummary'
-import './Dashboard.scss'
 import ProductVisual from '../product/ProductVisual'
+import './Dashboard.scss'
 
-const Dashboard = () => {
+/**
+ * A componment to contain product information and sale stats 
+ */
+
+const Dashboard : FC = () => {
   return (
     <div className='dashboard'>
       <ProductSummary />

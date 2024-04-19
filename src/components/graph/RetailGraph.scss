@@ -6,7 +6,7 @@
   box-shadow: $box-shadow;
   height: 60%;
   width: 100%;
-  min-width: 950px;
+  min-width: $wd-min;
   
   .graph-title {
     font-size: 1.5rem;
@@ -22,9 +22,9 @@
     }
   }
   
-  .recharts-cartesian-axis-tick { /* Target ticks */    
+  .recharts-cartesian-axis-tick { /* Target ticks in Recharts lib */    
     text{
-      font-size: 1rem; /* Tick font size */
+      font-size: 1rem;
       font-family: 'Avenir', sans-serif;
       font-weight: lighter;
       fill: $text-light;
@@ -32,12 +32,12 @@
     }
   }
   
-  .custom-tooltip {
+  .custom-tooltip { /* Target tooltip in Recharts lib */   
     background-color: $bg-black;
     color: white;
     border-radius: $box-radius;
     box-shadow: $box-shadow;
-    padding: 8px 16px;
+    padding: 1rem 2rem;
     font-family: 'Avenir', sans-serif;
     font-size: 1rem;
     font-weight: 500;

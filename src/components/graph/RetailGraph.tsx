@@ -1,12 +1,9 @@
 import {FC} from 'react'
-
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-
-
-import './RetailGraph.scss'
 import { useAppSelector } from '../../redux/hooks';
 import { selectSales } from '../../features/retail/retailSlice';
 import { formatDate, formatDollar} from '../../utils/format';
+import './RetailGraph.scss'
 
 
 const MONTH_ABBR = [
@@ -14,7 +11,9 @@ const MONTH_ABBR = [
   'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
 ];
 
-
+/**
+ * Customize tooltip in Recharts library
+ */
 const CustomTooltip: React.FC<any> = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const date = formatDate(label)
@@ -32,11 +31,20 @@ const CustomTooltip: React.FC<any> = ({ active, payload, label }) => {
   return null;
 };
 
+/**
+ * A component to show the line chart with sales data
+ */
 const RetailGraph: FC = () => {
   
   const sales = useAppSelector(selectSales);
   
-  const fromatTick = (tick: string, index: number) => {
+  /**
+   * Formate the tick text to only show each month once
+   * @param tick 
+   * @param index 
+   * @returns string tick formatter
+   */
+  const formatTick = (tick: string, index: number) => {
     if (index % (Math.ceil(sales.length / MONTH_ABBR.length)) === 1) {
       const monthIndex = parseInt(tick.split("-")[1], 10) - 1;
       return MONTH_ABBR[monthIndex]
@@ -52,7 +60,7 @@ const RetailGraph: FC = () => {
         <XAxis
           dataKey="weekEnding"
           tickLine={false}
-          tickFormatter={(tick, index) => fromatTick(tick, index)}
+          tickFormatter={(tick, index) => formatTick(tick, index)}
         />
         <YAxis domain={[-500000, 1500000]} hide />
         <Tooltip content={<CustomTooltip />} />

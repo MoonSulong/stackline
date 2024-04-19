@@ -1,10 +1,7 @@
 import {FC, useState, useEffect} from 'react'
-
+import { SaleType } from '../../mock/mockAPI';
 import { useAppSelector } from '../../redux/hooks';
 import { selectSales, selectLoading } from '../../features/retail/retailSlice';
-
-import { SaleType } from '../../mock/mockAPI';
-
 import { formatDate, formatComma, formatDollar, formatHeader } from '../../utils/format';
 
 import ascIcon from '../../assets/up.svg';
@@ -19,10 +16,11 @@ interface TableHeaderProps {
   onClick: (column: string) => void;
 }
 
+/**
+ * Custom table header to support sort with icon
+ */
 const TableHeader  : FC<TableHeaderProps> = ({column, sortBy, sortOrder, onClick}) => {
-  
   const align = column === "weekEnding" ? ' left-align' : ' right-align'; 
-  
   return (
     <th className={"th-cell" + align} onClick={() => onClick(column)}>
       <span>{formatHeader[column]} </span>
@@ -33,12 +31,17 @@ const TableHeader  : FC<TableHeaderProps> = ({column, sortBy, sortOrder, onClick
   )
 }
 
+/**
+ * A component to show table for retail stats
+ */
 const RetailTable : FC = () => {
-  
+  // redux state
   const sales = useAppSelector(selectSales);
   const loading = useAppSelector(selectLoading);
-  const [sortedData, setSortedData] = useState<SaleType[]>([]);
+  // state to dynamiclly map each key in sales
   const [saleKeys, setSaleKeys] = useState<(keyof SaleType)[]>([]);
+  // state to support sort
+  const [sortedData, setSortedData] = useState<SaleType[]>([]);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [sortBy, setSortBy] = useState<string | null>(null);
   
