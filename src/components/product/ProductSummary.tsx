@@ -1,7 +1,6 @@
 import {FC} from 'react'
 
 import { useAppSelector } from '../../redux/hooks';
-
 import { selectProduct } from '../../features/retail/retailSlice';
 
 import './ProductSummary.scss'

@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../redux/store';
-import { ProductType, fetchRetailData } from '../../mock/mockAPI';
+import { ProductType, SaleType, fetchRetailData } from '../../mock/mockAPI';
 
 export interface RetailState {
   retail: ProductType[],
   product: ProductType | null,
+  sales: SaleType[],
   loading: boolean,
   error: boolean,
 }
@@ -12,6 +13,7 @@ export interface RetailState {
 const initialState: RetailState = {
   retail: [],
   product: null,
+  sales: [],
   loading: true,
   error: false,
 };
@@ -43,6 +45,7 @@ export const retailSlice = createSlice({
       .addCase(fetchAsync.fulfilled, (state, action: PayloadAction<ProductType[]>) => {
         state.retail = action.payload;
         state.product = action.payload[0];
+        state.sales = action.payload[0].sales;
         state.loading = false;
         state.error = false;
       })
@@ -58,5 +61,7 @@ export const retailSlice = createSlice({
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectProduct = (state: RootState) => state.retail.product;
 export const selectLoading = (state: RootState) => state.retail.loading;
+export const selectSales = (state: RootState) => state.retail.sales;
+
 
 export default retailSlice.reducer;

@@ -4,6 +4,31 @@
   background-color: $bg-white;
   border-radius: $box-radius;
   box-shadow: $box-shadow;
-  height: 30%;
+  height: 60%;
   width: 100%;
+  min-width: 950px;
+  
+  .graph-title {
+    font-size: 1.5rem;
+    color: $text-dark;
+    font-weight: 500;
+    text-align: start;
+    padding: 0.5rem 2rem 0;
+  }
+  
+  .recharts-xAxis {
+    line {
+      stroke: $text-light;
+    }
+  }
+  
+  .recharts-cartesian-axis-tick { /* Target ticks */    
+    text{
+      font-size: 16px; /* Tick font size */
+      font-family: 'Poppins', sans-serif;
+      font-weight: lighter;
+      fill: $text-light;
+      transform: translateY(10px);
+    }
+  }
 }
