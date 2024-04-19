@@ -8,7 +8,6 @@ import Dashboard from './components/dashboard/Dashboard';
 
 
 import Header from './components/header/Header';
-import './App.css';
 
 const App: FC = () => {
   

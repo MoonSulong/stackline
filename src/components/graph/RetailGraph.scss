@@ -24,8 +24,8 @@
   
   .recharts-cartesian-axis-tick { /* Target ticks */    
     text{
-      font-size: 16px; /* Tick font size */
-      font-family: 'Poppins', sans-serif;
+      font-size: 1rem; /* Tick font size */
+      font-family: 'Avenir', sans-serif;
       font-weight: lighter;
       fill: $text-light;
       transform: translateY(20px);
@@ -38,8 +38,9 @@
     border-radius: $box-radius;
     box-shadow: $box-shadow;
     padding: 8px 16px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
     text-align: start;
     
     .line1 {

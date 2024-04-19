@@ -31,6 +31,7 @@ export const formatDollar = (num: number) : string => {
   return "$" + formatComma(num);
 }
 
+// A dictionary to for upper case table header 
 export const formatHeader = {
   weekEnding: "WEEK ENDING", 
   retailSales: "RETAIL SALES", 
